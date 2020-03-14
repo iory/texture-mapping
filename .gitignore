@@ -1,4 +1,5 @@
 *~
+texture_mapping/texture_mapping
 _skbuild
 *.egg/
 *.egg-info/
