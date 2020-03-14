@@ -16,3 +16,5 @@ texture-mapping --input examples/obj.ply --out textured.obj --config-dir example
 ```
 
 Output obj file `textured.obj` will be created at the same directory of input ply file.
+
+![](docs/image/textured.gif)
