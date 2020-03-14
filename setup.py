@@ -8,7 +8,7 @@ import sys
 from setuptools import find_packages
 
 
-version = '0.0.2'
+version = '0.0.3'
 
 
 if sys.argv[-1] == 'release':
