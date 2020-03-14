@@ -1,0 +1,10 @@
+*~
+_skbuild
+*.egg/
+*.egg-info/
+*.pyc
+\#*\#
+.\#*
+/build/
+/dist/
+/src/

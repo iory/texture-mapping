@@ -1,0 +1,9 @@
+.gitignore
+CMakeLists.txt
+README.md
+setup.py
+texture_mapping.cpp
+texture_mapping/__init__.py
+texture_mapping/apps/__init__.py
+texture_mapping/apps/mapping.py
+texture_mapping/texture_mapping
