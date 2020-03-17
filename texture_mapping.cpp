@@ -151,18 +151,28 @@ int main(int argc, char** argv) {
 
   const boost::filesystem::path base_dir(argv[3]);
   std::string extension(".txt");
-  int cpt_cam = 0;
-  for (boost::filesystem::directory_iterator it(base_dir);
-       it != boost::filesystem::directory_iterator(); ++it) {
-    if (boost::filesystem::is_regular_file(it->status()) &&
-        boost::filesystem::extension(it->path()) == extension) {
-      pcl::TextureMapping<pcl::PointXYZ>::Camera cam;
-      read_cam_pose_file(it->path().string(), cam);
-      cam.texture_file = boost::filesystem::basename(it->path()) + ".png";
-      my_cams.push_back(cam);
-      cpt_cam++;
+  std::vector<boost::filesystem::path> filenames;
+    try {
+      for (boost::filesystem::directory_iterator it(base_dir);
+           it != boost::filesystem::directory_iterator(); ++it) {
+          if (boost::filesystem::is_regular_file(it->status()) &&
+              boost::filesystem::extension(it->path()) == extension) {
+            filenames.push_back(it->path());
+            }
+        }
+    } catch (const boost::filesystem::filesystem_error& e) {
+        cerr << e.what() << endl;
     }
-  }
+    std::sort(filenames.begin(), filenames.end());
+
+
+    for(int i=0; i<filenames.size(); ++i){
+      std::cout << filenames[i].string() << std::endl;
+      pcl::TextureMapping<pcl::PointXYZ>::Camera cam;
+      read_cam_pose_file(filenames[i].string(), cam);
+      cam.texture_file = filenames[i].stem().string() + ".png";
+      my_cams.push_back(cam);
+    }
 
   // Create materials for each texture (and one extra for occluded faces)
   mesh.tex_materials.resize(my_cams.size() + 1);
