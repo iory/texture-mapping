@@ -44,6 +44,7 @@
 #include <iostream>
 #include <sstream>
 
+#include <pcl/common/io.h> // for concatenateFields
 #include <pcl/common/transforms.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/io/obj_io.h>
