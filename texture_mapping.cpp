@@ -53,6 +53,7 @@
 #include <pcl/surface/texture_mapping.h>
 
 using namespace pcl;
+using namespace std;
 
 std::ifstream& go_to_line(std::ifstream& file, unsigned int num) {
   file.seekg(std::ios::beg);
